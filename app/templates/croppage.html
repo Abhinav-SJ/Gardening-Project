@@ -1,0 +1,84 @@
+{% extends 'layout.html' %}
+{% block body %}
+
+    <style>
+        html body{
+            background-color: pink;
+        }
+    </style>
+
+    <!--form section-->
+    <br><br>
+    <h2 style="text-align: center; margin: 0 px; color: black"><b>Find out which crop suits your garden</b></h2>
+    <br>
+
+    <div
+  style="
+    width: 350px;
+    height: 50rem;
+    margin: 0px auto;
+    color: black;
+    border-radius: 25px;
+    padding: 10px 10px;
+  "
+>
+        <form action="{{url_for('predictcrop')}}" method="POST">
+            <div class="form-group">
+                <label for="Nitrogen" style="font-size: 17px;"><b>Enter Nitrogen value</b></label>
+                <input type="number" class="form-control" id="Nitrogen" name= "Nitrogen" 
+                placeholder="for eg: 50" style="font-weight: bold;" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Phosphorus" style="font-size: 17px;"><b>Enter Phosphorus value</b></label>
+                <input type="number" class="form-control" id="Phosphorus" name= "Phosphorus" 
+                placeholder="for eg: 50" style="font-weight: bold;" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Potiassium" style="font-size: 17px;"><b>Enter Potassium value</b></label>
+                <input type="number" class="form-control" id="Potassium" name= "Pottasium" 
+                placeholder="for eg: 50" style="font-weight: bold;" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ph" style="font-size: 17px;"><b>Enter pH value</b></label>
+                <input type="number" class="form-control" id="ph" name= "ph" 
+                placeholder="Enter a value" style="font-weight: bold" step= "0.01" required>
+            </div>
+
+            <div class="form-group">
+                <label for="rainfall" style="font-size: 17px;"><b>Enter Rainfall value</b></label>
+                <input type="number" class="form-control" id="rainfall" name= "rainfall" 
+                placeholder="Enter a value" style="font-weight: bold;" step="0.01" required>
+            </div>
+
+            <div class=""form-group>
+                <label for="State" style="font-size: 17px;"><b>Enter state</b></label>
+                <select name="stt" id="sts" class="form-control" 
+                onchange="print_city('state',this.selectedIndex)" style="font-weight: bold; color:black;"
+                required>
+                </select>
+                <br>
+
+                <label for="City" style="font-size: 17px;"><b>Enter city</b></label>
+                <select name="city" id="state" class="form-control" 
+                style="font-weight: bold; color:black;"
+                required>
+                </select>
+
+                <script language = "javascript">
+                    print_state("sts")
+                </script>
+            </div>
+            <br>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-lg btn-primary btn-block" 
+                    style="color:black; font-weight: bold; width:180px; height:50px; 
+                    border-radius:12px; font-size:21px">
+                    Predict my crop
+                </button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
